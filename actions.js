@@ -31,18 +31,16 @@ function removeComment(id) {
     }
 }
 
-function thumbUp(thumbs, id) {
+function thumbUp(id) {
 	return {
 		type: THUMB_UP,
-		thumbs: thumbs +1,
 		id
 	}
 }
 
-function thumbDown(thumbs, id) {
+function thumbDown(id) {
 	return {
 		type: THUMB_DOWN,
-		thumbs: thumbs -1,
 		id
 	}
 }

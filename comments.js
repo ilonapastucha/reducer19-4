@@ -8,30 +8,26 @@ function comments(state = [], action) {
                 id: action.id,
                 text: action.text,
                 thumb: 0
-            }, ...state.comments ];
+            }, ...state ];
 
         case REMOVE_COMMENT:
-            return [{
-                comments: state.comments.filter(comment => comment.id !== action.id)
-            }];
+            return state.comments.filter(comment => comment.id !== action.id)
 
         case EDIT_COMMENT:
-            return [{
-                id: state.comments.id,
-                text: action.text
-            }, ...state.comments];
+            return state.map(comment => comments.id === action.id ? 
+                {... comment, text: action.text} : comment
+            );
 
         case THUMB_UP:
-            return [{
-                id: state.comments.id,
-                thumb: action.thumb++
-            }];
+            return state.map(comment => comments.id === action.id ? 
+                {... comment, thumb: comment.thumb + 1} : comment
+            );
+
 
         case THUMB_DOWN:
-            return [{
-                id: state.comments.id,
-                thumb: action.thumb--
-            }];
+        return state.map(comment => comments.id === action.id ? 
+            {... comment, thumb: comment.thumb - 1} : comment
+        );
 
         default:
             return state;
