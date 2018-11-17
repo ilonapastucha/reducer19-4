@@ -11,21 +11,21 @@ function comments(state = [], action) {
             }, ...state ];
 
         case REMOVE_COMMENT:
-            return state.comments.filter(comment => comment.id !== action.id)
+            return state.filter(comment => comment.id !== action.id)
 
         case EDIT_COMMENT:
-            return state.map(comment => comments.id === action.id ? 
+            return state.map(comment => comment.id === action.id ? 
                 {... comment, text: action.text} : comment
             );
 
         case THUMB_UP:
-            return state.map(comment => comments.id === action.id ? 
+            return state.map(comment => comment.id === action.id ? 
                 {... comment, thumb: comment.thumb + 1} : comment
             );
 
 
         case THUMB_DOWN:
-        return state.map(comment => comments.id === action.id ? 
+        return state.map(comment => comment.id === action.id ? 
             {... comment, thumb: comment.thumb - 1} : comment
         );
 
